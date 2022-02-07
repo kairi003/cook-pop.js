@@ -1,2 +1,2 @@
-# cookpad-popular.js
-スマホ版cookpadで人気度順検索を見るブックマークレット
+# cook-pop.js
+スマホ版c〇〇kpadで人気度順検索を見れてしまうブックマークレット

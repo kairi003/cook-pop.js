@@ -23,8 +23,8 @@ javascript: {
   <a class="recipe-content-template recipe_link flex_recipe_content track_hakari2" id="recipe" href="/recipe/">
     <div class="card_content">
       <h2 class="recipe_title"></h2>
-      <div class="author"> by </div>
-      <div class="ingredients"></div>
+      <div class="author"> by {loading...}</div>
+      <div class="ingredients">{loading...}</div>
     </div>
   </a>
 
@@ -46,9 +46,9 @@ javascript: {
       .then(d => {
         const ogTitle = d.head.querySelector('meta[property="og:title"]').content;
         const eTitle = recipeTitle.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
-        const authorName = ogTitle.match(new RegExp('^' + eTitle + ' by (.*)'))[1];
+        const authorName = ogTitle.replace(new RegExp(eTitle), '');
         const author = flexContent.querySelector('.author');
-        author.appendChild(document.createTextNode(authorName));
+        author.textContent = authorName;
         const desc = d.head.querySelector('meta[property="og:description"]').content;
         const ingredients = flexContent.querySelector('.ingredients');
         ingredients.textContent = desc;
